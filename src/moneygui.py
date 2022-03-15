@@ -227,11 +227,22 @@ class MyWindow(QMainWindow):
         betr_bar = self.convert_values(self.bar_field.text())
 
         insert_string = f"""INSERT INTO assets VALUES ("{datum}", "{betr_not}", "{betr_rente}", "{betr_comdirect}", "{betr_tr}", "{betr_sc}", "{betr_mintos}", "{betr_ecologio}", "{betr_kredit}", "{betr_bar}")"""
-        conn = sqlite3.connect("../assets/money.db")
+        conn = sqlite3.connect(".\\assets\\money.db")
         cur = conn.cursor()
 
         cur.execute(insert_string)
         conn.commit()
+
+        self.not_field.setText("")
+        self.rent_field.setText("")
+        self.comdirect_field.setText("")
+        self.tr_field.setText("")
+        self.sc_field.setText("")
+        self.mintos_field.setText("")
+        self.ecologio_field.setText("")
+        self.kredit_field.setText("")
+        self.bar_field.setText("")
+       
 
     def convert_values(self, eingabe):
         """
